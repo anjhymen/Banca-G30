@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.unab.banca.Dao.ClienteDao;
 import com.unab.banca.Models.Cliente;
 import com.unab.banca.Service.ClienteService;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/cliente")
@@ -25,11 +26,13 @@ public class ClienteController {
     private ClienteDao clienteDao; 
     @Autowired
     private ClienteService clienteService;
+    
     @PostMapping(value="/")
     public ResponseEntity<Cliente> agregar(@RequestBody Cliente cliente){        
         Cliente obj = clienteService.save(cliente);
         return new ResponseEntity<>(obj, HttpStatus.OK);     
     }
+   
     @DeleteMapping(value="/{id}") 
     public ResponseEntity<Cliente> eliminar(@PathVariable String id){ 
         Cliente obj = clienteService.findById(id); 
@@ -39,6 +42,7 @@ public class ClienteController {
             return new ResponseEntity<>(obj, HttpStatus.INTERNAL_SERVER_ERROR); 
         return new ResponseEntity<>(obj, HttpStatus.OK); 
     }
+    
     @PutMapping(value="/") 
     public ResponseEntity<Cliente> editar(@RequestBody Cliente cliente){ 
         Cliente obj = clienteService.findById(cliente.getId_cliente()); 
@@ -51,12 +55,15 @@ public class ClienteController {
             return new ResponseEntity<>(obj, HttpStatus.INTERNAL_SERVER_ERROR); 
         return new ResponseEntity<>(obj, HttpStatus.OK); 
     }
+    
     @GetMapping("/list") 
     public List<Cliente> consultarTodo(){
         return clienteService.findAll(); 
     }
+    
     @GetMapping("/list/{id}") 
     public Cliente consultaPorId(@PathVariable String id){ 
         return clienteService.findById(id); 
     }
+    
 }

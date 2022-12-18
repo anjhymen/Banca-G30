@@ -25,11 +25,13 @@ public class Cuenta implements Serializable {
     @ManyToOne
     @JoinColumn(name="id_cliente")
     private Cliente cliente;
-
+    
     @Override
     public String toString() {
         return "Cuenta [id_cuenta=" + id_cuenta + ", fecha_apertura=" + fecha_apertura + ", saldo_cuenta="
                 + saldo_cuenta + ", cliente=" + cliente + "]";
     }
+
     
+
 }

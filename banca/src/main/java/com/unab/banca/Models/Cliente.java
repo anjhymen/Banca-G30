@@ -22,7 +22,7 @@ public class Cliente  implements Serializable{
     private String nombre_cliente;
     @Column(name="clave_cliente")
     private String clave_cliente;
-    
+
     @Override
     public String toString() {
         return "Cliente [id_cliente=" + id_cliente + ", nombre_cliente=" + nombre_cliente + ", clave_cliente="
